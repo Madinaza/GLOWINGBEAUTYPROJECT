@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.nav .nav__list {
+  padding: 1.8rem 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.nav .nav__list .searchIcon {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.nav .nav__list .nav__listLogo {
+  list-style: none;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.nav .nav__list .nav__listitem {
+  color: #1b1b1b;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 22px;
+  letter-spacing: 0.1em;
+  list-style: none;
+  position: relative;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.nav .nav__list .nav__listitem::after {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  position: absolute;
+  left: 1rem;
+  bottom: 0.8rem;
+  background-color: black;
+  -webkit-transition: width 200ms ease-in;
+  transition: width 200ms ease-in;
+  -webkit-transition-delay: 2ms;
+          transition-delay: 2ms;
+}
+
+.nav .nav__list .nav__listitem:hover::after, .nav .nav__list .nav__listitem:focus::after {
+  width: 70%;
+}
+
+.nav .nav__list .nav__listitem:hover ul,
+.nav .nav__list .nav__listitem:focus ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav .nav__list .nav__listitem .nav__listitemdrop {
+  position: absolute;
+  top: 4.5rem;
+  left: -1rem;
+  width: 12rem;
+  padding: 1rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.nav .nav__list .nav__listitem .nav__listitemdrop li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+.Product-tag {
+  font-family: "Playpair Display", serif;
+  height: 225px;
+  background-color: #fafaf9;
+}
+
+.Product-tag h1 {
+  padding-left: 35px;
+  padding-top: 70px;
+  font-size: 53px;
+  line-height: 1.32em;
+}
+
+.Product-tag span {
+  color: #888;
+  padding-left: 31px;
+  font-size: 18px;
+}
+
+.ProductList {
+  font-family: "Playpair Display", serif;
+  margin-top: 80px;
+}
+
+.ProductList .container .row .col-lg-2 .row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.ProductList .container .row .col-lg-2 .row img {
+  margin: 0px 4px 20px -5px;
+}
+
+.ProductList .container .row .col-lg-5 {
+  margin-left: -80px;
+}
+
+.ProductList .container .row .paraghPart {
+  margin-left: 20px;
+}
+
+.ProductList .container .row .paraghPart .paragh {
+  margin-top: 20px;
+}
+
+.ProductList .container .row .paraghPart .paragh h2 {
+  font-size: 45px;
+  margin-bottom: 0px;
+}
+
+.ProductList .container .row .paraghPart .paragh span {
+  color: #afafaf;
+}
+
+.ProductList .container .row .paraghPart .paragh p {
+  color: #6d6a6a;
+  padding-top: 20px;
+  font-size: 17px;
+}
+
+.ProductList .container .row .paraghPart .product-meta {
+  margin-top: 150px;
+}
+
+.ProductList .container .row .paraghPart .product-meta .skuBeggin {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.ProductList .container .row .paraghPart .product-meta .skuBeggin .sku {
+  color: #8b8b8b;
+}
+
+.ProductList .container .row .paraghPart .product-meta .categories {
+  font-size: 14px;
+  margin-bottom: 7px;
+  display: block;
+}
+
+.ProductList .container .row .paraghPart .product-meta .categories a {
+  color: #8b8b8b;
+  text-decoration: none;
+}
+
+.ProductList .container .row .paraghPart .product-meta .categories a:hover {
+  color: #f34f3f;
+}
+
+.ProductList .container .row .paraghPart .product-meta .tags {
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.ProductList .container .row .paraghPart .product-meta .tags a {
+  color: #8b8b8b;
+  text-decoration: none;
+}
+
+.ProductList .container .row .paraghPart .product-meta .tags a:hover {
+  color: #f34f3f;
+}
+
+.reviews {
+  margin-top: 120px;
+}
+
+.reviews .tab-header3 {
+  border-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.reviews .tab-header3 div {
+  position: relative;
+  width: 15%;
+  text-align: center;
+  padding: 15px;
+  z-index: 5;
+  color: black;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  border: 1px solid;
+  border-color: #f5f5f5;
+}
+
+.reviews .tab-header3 div:hover {
+  background-color: #f34f3f;
+  color: white;
+}
+
+.reviews .tab-header3 div.active {
+  color: white;
+  background-color: #f34f3f;
+}
+
+.reviews .tab-body3 {
+  position: relative;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #f5f5f5;
+  height: 300px;
+  width: 1330px;
+  overflow: hidden;
+}
+
+.reviews .tab-body3 .desc {
+  margin: 20px;
+  position: absolute;
+  opacity: 0;
+  top: 100%;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.reviews .tab-body3 .desc.active {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  top: 30px;
+  opacity: 1;
+}
+
+.reviews .tab-body3 .desc p {
+  color: #555;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.reviews .tab-body3 .addit {
+  margin: 20px;
+  position: absolute;
+  opacity: 0;
+  top: 100%;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.reviews .tab-body3 .addit .mains {
+  color: red;
+}
+
+#Test .main .mains {
+  color: red;
+}
+/*# sourceMappingURL=productList.css.map */
