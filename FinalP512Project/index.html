@@ -40,7 +40,8 @@
     <meta property="og:image:height" content="630">
   </head>
   <body>
-    <header class="main-header navbar-light header-sticky header-sticky-smart position-absolute fixed-top">
+    <header class="main-header navbar-light header-sticky 
+    header-sticky-smart position-absolute fixed-top">
       <div class="sticky-area">
         <div class="container container-xxl">
           <nav class="navbar navbar-expand-xl px-0 d-block">
@@ -120,13 +121,14 @@
                           <span class="position-absolute number">0</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link position-relative px-4 menu-cart py-0 d-inline-flex align-items-center mr-n2" href="#" data-canvas="true"
+                        <a class="nav-link position-relative px-4 menu-cart py-0 
+                        d-inline-flex align-items-center mr-n2" href="#" data-canvas="true"
            data-canvas-options='{"container":".cart-canvas"}'>
-                          <span class="mr-2 font-weight-bold fs-15">$0.00</span>
+                          <!-- <span class="mr-2 font-weight-bold fs-15 total__cost">$0.00</span> -->
                           <svg class="icon icon-shopping-bag-open-light">
                             <use xlink:href="#icon-shopping-bag-open-light"></use>
                           </svg>
-                          <span class="position-absolute number">0</span>
+                          <span class="position-absolute number total__counter">0</span>
                         </a>
                       </li>
                     </ul>
@@ -246,21 +248,24 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-7 products">
               <div class="row">
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="1">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-01.jpg" alt="Facial cleanser">
+                      <img id="image" src="images/product-01.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
                           <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
+                         
+                          
+                          <a data-toggle="tooltip" data-placement="left" title="Add to wishlist"
+                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+                            <svg id="addToWishList" class="icon icon-star-light fs-24">
+                              <use xlink:href="#icon-star-light"></use>
                             </svg>
                           </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
@@ -271,27 +276,22 @@
                               </svg>
                             </span>
                           </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+
+                          <a  data-toggle="tooltip"  data-placement="left"  title="Add To Cart"
+                          class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+             <use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+           </svg>
+         </a>
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                         <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span>
-                        <span>$29.00</span>
+                        <span id="product__price">$29.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Facial cleanser</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Facial cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -311,48 +311,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="2">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-02.jpg" alt="Bio-shroom Rejuvenating Serum">
+                      <img id="image" src="images/product-02.jpg" alt="cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                          
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$79.00</span>
+                        <span id="product__price">$59.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Bio-shroom Rejuvenating Serum</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -372,48 +372,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="3">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-06.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-03.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                         
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$139.00</span>
+                        <span id="product__price">$129.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Bio-shroom Serum</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -433,19 +433,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="4">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-03.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-04.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
-                          <span class="badge badge-warning">New</span>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
+                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
+                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+                            <svg class="icon icon-star-light fs-24">
+                              <use xlink:href="#icon-star-light"></use>
                             </svg>
                           </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
@@ -456,26 +458,23 @@
                               </svg>
                             </span>
                           </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+
+                          <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+                          class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+             <use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+           </svg>
+         </a>
+                          
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$99.00</span>
+                        <span id="product__price">$59.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Madina cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -495,18 +494,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="5">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-07.jpg" alt="Facial cleanser">
+                      <img id="image" src="images/product-05.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
+                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
+                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+                            <svg class="icon icon-star-light fs-24">
+                              <use xlink:href="#icon-star-light"></use>
                             </svg>
                           </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
@@ -517,27 +519,23 @@
                               </svg>
                             </span>
                           </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+
+                          <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+                          class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+             <use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+           </svg>
+         </a>
+                         
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                         <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span>
-                        <span>$29.00</span>
+                        <span id="product__price">$29.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Facial cleanser</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Facial cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -557,19 +555,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInRight">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInRight">
+                  <input type="hidden" name="" id="product__id" value="6">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-08.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-07.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
-                          <span class="badge badge-warning">New</span>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
+                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
+                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+                            <svg class="icon icon-star-light fs-24">
+                              <use xlink:href="#icon-star-light"></use>
                             </svg>
                           </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
@@ -580,26 +580,22 @@
                               </svg>
                             </span>
                           </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+
+                          <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+                          class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+             <use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+           </svg>
+         </a>
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$59.00</span>
+                        <span id="product__price">$49.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Coffee Eye Cream</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -619,6 +615,7 @@
                     </div>
                   </div>
                 </div>
+               
               </div>
             </div>
           </div>
@@ -706,50 +703,47 @@
           <div class="row">
             <div class="col-lg-7 order-2 order-lg-1">
               <div class="row">
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="7">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-01.jpg" alt="Facial cleanser">
+                      <img id="image" src="images/product-01.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
                           <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                       
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                         <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span>
-                        <span>$29.00</span>
+                        <span id="product__price">$29.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Facial cleanser</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Facial cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -769,48 +763,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="8">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-02.jpg" alt="Bio-shroom Rejuvenating Serum">
+                      <img id="image" src="images/product-02.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                         
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$79.00</span>
+                        <span id="product__price">$59.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Bio-shroom Rejuvenating Serum</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -830,48 +824,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="9">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-06.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-03.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                       
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$139.00</span>
+                        <span id="product__price">$129.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Bio-shroom Rejuvenating Serum</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -891,49 +885,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="10">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-03.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-04.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
-                          <span class="badge badge-warning">New</span>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                        
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$99.00</span>
+                        <span id="product__price">$59.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Madina cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -953,49 +946,48 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="11">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-07.jpg" alt="Facial cleanser">
+                      <img id="image" src="images/product-05.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
+                        
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                         <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span>
-                        <span>$29.00</span>
+                        <span id="product__price">$29.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Facial cleanser</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Facial cleanser</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -1015,49 +1007,47 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-3" data-animate="fadeInLeft">
+
+                <div class="col-md-4 col-sm-6 mb-3 product__element" data-animate="fadeInLeft">
+                  <input type="hidden" name="" id="product__id" value="12">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="images/product-08.jpg" alt="Coffee Bean Caffeine Eye Cream">
+                      <img id="image" src="images/product-07.jpg" alt="Facial cleanser">
                       <div class="card-img-overlay d-flex p-3">
                         <div>
-                          <span class="badge badge-warning">New</span>
+                          <span class="badge badge-primary">-20%</span>
                         </div>
                         <div class="my-auto w-100 content-change-vertical">
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
-                                           class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-shopping-bag-open-light fs-24">
-                              <use xlink:href="#icon-shopping-bag-open-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
-                                           class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                            <span data-toggle="modal" data-target="#quick-view">
-                              <svg class="icon icon-eye-light fs-24">
-                                <use xlink:href="#icon-eye-light"></use>
-                              </svg>
-                            </span>
-                          </a>
                           <a href="#" data-toggle="tooltip" data-placement="left" title="Add to wishlist"
-                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                            <svg class="icon icon-star-light fs-24">
-                              <use xlink:href="#icon-star-light"></use>
-                            </svg>
-                          </a>
-                          <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                                           class="add-to-compare ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle">
-                            <svg class="icon icon-arrows-left-right-light fs-24">
-                              <use xlink:href="#icon-arrows-left-right-light"></use>
-                            </svg>
-                          </a>
+                          class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+           <svg class="icon icon-star-light fs-24">
+             <use xlink:href="#icon-star-light"></use>
+           </svg>
+         </a>
+         <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view"
+                          class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+           <span data-toggle="modal" data-target="#quick-view">
+             <svg class="icon icon-eye-light fs-24">
+               <use xlink:href="#icon-eye-light"></use>
+             </svg>
+           </span>
+         </a>
+
+         <a  data-toggle="tooltip" data-placement="left"  title="Add To Cart"
+         class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+<svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+<use xlink:href="#icon-shopping-bag-open-light"></usCarte>
+</svg>
+</a>
                         </div>
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <span>$29.00</span>
+                        <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$59.00</span>
+                        <span id="product__price">$49.00</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html">Coffee Bean Caffeine Eye Cream</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-detail-01.html" id="product__name">Coffee Bean Caffeine Eye Cream</a>
                       </h2>
                       <div class="d-flex align-items-center justify-content-center flex-wrap">
                         <ul class="list-inline mb-0 lh-1">
@@ -1077,6 +1067,7 @@
                     </div>
                   </div>
                 </div>
+             
               </div>
             </div>
             <div class="col-lg-5 mb-8 mb-lg-0 order-1 order-lg-2" data-animate="fadeInRight">
@@ -1344,7 +1335,7 @@
     <script src="vendors/mapbox-gl/mapbox-gl.js"></script>
     <script src="vendors/isotope/isotope.js"></script>
     <!-- Theme scripts -->
-    <script src="js/theme.js"></script>
+    <script src="js/theme.js" defer></script>
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
@@ -1718,6 +1709,14 @@
        title="Back To Top"><i
             class="fal fa-arrow-up"></i></a>
     </div>
+
+
+
+
+
+
+
+
     <div class="canvas-sidebar cart-canvas">
       <div class="canvas-overlay">
       </div>
@@ -1726,6 +1725,7 @@
           <span class="canvas-close d-inline-block fs-24 mb-1 ml-auto lh-1 text-primary"><i
 		                 class="fal fa-times"></i></span>
         </div>
+      <div class="card__items">
         <div class="card-header bg-transparent p-0 mx-6">
           <h3 class="fs-24 mb-5">
             Shopping bag
@@ -1734,99 +1734,49 @@
 					class="far fa-check-circle"></i></span>
             Your cart is saved for the next <span class="text-secondary">4m34s</span></p>
         </div>
-        <div class="card-body px-6 pt-7 overflow-y-auto">
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-01.jpg" alt="atural Coconut Cleansing Oil">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Natural Coconut Cleansing Oil</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-02.jpg" alt="Super Pure">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Super Pure</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-03.jpg" alt="Cleansing Balm">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Cleansing Balm</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="card-body px-6 pt-7 cart__items"  style="overflow-y: scroll;height: 300px;">
+        
         </div>
         <div class="card-footer mt-auto border-0 bg-transparent px-6 pb-0 pt-5">
           <div class="d-flex align-items-center mb-2">
-            <span class="text-secondary fs-15">Total price:</span>
-            <span class="d-block ml-auto fs-24 font-weight-bold text-secondary">$106.00</span>
+            <span class="text-secondary fs-15 check_out">Total price:</span>
+            <span class="d-block ml-auto fs-24 font-weight-bold text-secondary total_cost total__cost">0</span><span class="font-weight-bold">$</span>
           </div>
           <a href="checkout.html" class="btn btn-secondary btn-block mb-3 bg-hover-primary border-hover-primary">Check Out</a>
           <a href="shopping-cart.html" class="btn btn-outline-secondary btn-block">View Cart</a>
         </div>
       </div>
+
+      </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="mfp-hide search-popup mfp-with-anim" id="search-popup">
       <form>
         <div class="input-group position-relative">
@@ -2010,12 +1960,7 @@
                           <use xlink:href="#icon-star-light"></use>
                         </svg>
                       </a>
-                      <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-									   class="add-to-compare d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mt-2 mr-3">
-                        <svg class="icon icon-arrows-left-right-light fs-24">
-                          <use xlink:href="#icon-arrows-left-right-light"></use>
-                        </svg>
-                      </a>
+                    
                     </div>
                   </div>
                   <div class="view-slider-for mx-0">
@@ -2141,12 +2086,7 @@
                     </div>
                   </form>
                   <div class="d-flex align-items-center flex-wrap">
-                    <a href="#" class="text-decoration-none font-weight-bold fs-16 mr-6 d-flex align-items-center">
-                      <svg class="icon icon-arrows-left-right-light fs-20">
-                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                      </svg>
-                      <span class="ml-2">Compare</span>
-                    </a>
+                    
                     <a href="#" class="text-decoration-none font-weight-bold fs-16 mr-6 d-flex align-items-center">
                       <svg class="icon icon-star-light fs-20">
                         <use xlink:href="#icon-star-light"></use>

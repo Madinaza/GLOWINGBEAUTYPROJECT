@@ -130,7 +130,7 @@
                           <svg class="icon icon-shopping-bag-open-light">
                             <use xlink:href="#icon-shopping-bag-open-light"></use>
                           </svg>
-                          <span class="position-absolute number">0</span>
+                          <span class="position-absolute number total__counter">0</span>
                         </a>
                       </li>
                     </ul>
@@ -181,8 +181,9 @@
       </section>
       <section class="pt-11 product-details-layout-2">
         <div class="container">
-          <div class="row">
+          <div class="row"> 
             <div class="col-md-6 pr-xl-9 mb-8 mb-md-0">
+              <input type="hidden" name="" id="#product__id">
               <div class="galleries-product galleries-product-02 position-relative">
                 <div class="position-absolute pos-fixed-top-right z-index-2 w-100">
                   <div class="p-3">
@@ -192,19 +193,14 @@
                         <use xlink:href="#icon-star-light"></use>
                       </svg>
                     </a>
-                    <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"
-                               class="add-to-compare d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mt-2 ml-auto">
-                      <svg class="icon icon-arrows-left-right-light fs-24">
-                        <use xlink:href="#icon-arrows-left-right-light"></use>
-                      </svg>
-                    </a>
+                  
                   </div>
                 </div>
                 <div class="slick-slider slider-for mx-0"
                          data-slick-options='{"slidesToShow": 1, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-nav"}'>
                   <div class="box px-0">
                     <div class="card p-0 rounded-0 border-0">
-                      <a href="images/product-07.jpg" class="card-img" data-gtf-mfp="true"
+                      <a id="image" href="images/product-07.jpg" class="card-img" data-gtf-mfp="true"
                                    data-gallery-id="02">
                         <img src="images/product-07.jpg" alt="product gallery" class="w-100">
                       </a>
@@ -255,10 +251,10 @@
             <div class="col-md-6">
               <p class="d-flex align-items-center mb-3">
                 <span class="text-line-through">$39.00</span>
-                <span class="fs-18 text-secondary font-weight-bold ml-3">$29.00</span>
+                <span class="fs-18 text-secondary font-weight-bold ml-3" id="product__price">$29.00</span>
                 <span class="badge badge-primary fs-16 ml-4 font-weight-600 px-3">20%</span>
               </p>
-              <h2 class="fs-24 mb-2">Natural Coconut Cleansing Oil</h2>
+              <h2 class="fs-24 mb-2" id="product__name">Natural Coconut Cleansing Oil</h2>
               <div class="d-flex align-items-center flex-wrap mb-3 lh-12">
                 <p class="mb-0 font-weight-600 text-secondary">4.86</p>
                 <ul class="list-inline d-flex mb-0 px-3 rating-result">
@@ -315,7 +311,7 @@
                     </div>
                   </div>
                   <div class="col-sm-8 mb-6 w-100 px-2">
-                    <button type="submit"
+                    <button type="button" id="addToCart"
                                     class="btn btn-lg fs-18 btn-secondary btn-block h-60 bg-hover-primary border-0">Add
                       To Bag
                     </button>
@@ -1588,7 +1584,7 @@
     <script src="vendors/mapbox-gl/mapbox-gl.js"></script>
     <script src="vendors/isotope/isotope.js"></script>
     <!-- Theme scripts -->
-    <script src="js/theme.js"></script>
+    <script src="js/theme.js" defer></script>
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
@@ -1962,6 +1958,9 @@
        title="Back To Top"><i
             class="fal fa-arrow-up"></i></a>
     </div>
+    
+
+
     <div class="canvas-sidebar cart-canvas">
       <div class="canvas-overlay">
       </div>
@@ -1970,6 +1969,7 @@
           <span class="canvas-close d-inline-block fs-24 mb-1 ml-auto lh-1 text-primary"><i
 		                 class="fal fa-times"></i></span>
         </div>
+      <div class="card__items">
         <div class="card-header bg-transparent p-0 mx-6">
           <h3 class="fs-24 mb-5">
             Shopping bag
@@ -1978,99 +1978,28 @@
 					class="far fa-check-circle"></i></span>
             Your cart is saved for the next <span class="text-secondary">4m34s</span></p>
         </div>
-        <div class="card-body px-6 pt-7 overflow-y-auto">
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-01.jpg" alt="atural Coconut Cleansing Oil">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Natural Coconut Cleansing Oil</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-02.jpg" alt="Super Pure">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Super Pure</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4 d-flex">
-            <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
-            <div class="media w-100">
-              <div class="w-60px mr-3">
-                <img src="images/cart-03.jpg" alt="Cleansing Balm">
-              </div>
-              <div class="media-body d-flex">
-                <div class="cart-price pr-6">
-                  <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-									class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
-                  </p>
-                  <a href="#" class="text-secondary">Cleansing Balm</a>
-                </div>
-                <div class="position-relative ml-auto">
-                  <div class="input-group">
-                    <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i
-										class="far fa-minus"></i></a>
-                    <input type="number"
-								       class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
-                    <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i
-										class="far fa-plus"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="card-body px-6 pt-7  cart__items  " style="overflow-y: scroll;height: 300px;">
+        
         </div>
         <div class="card-footer mt-auto border-0 bg-transparent px-6 pb-0 pt-5">
           <div class="d-flex align-items-center mb-2">
-            <span class="text-secondary fs-15">Total price:</span>
-            <span class="d-block ml-auto fs-24 font-weight-bold text-secondary">$106.00</span>
+            <span class="text-secondary fs-15 check_out">Total price:</span>
+            <span class="d-block ml-auto fs-24 font-weight-bold text-secondary total_cost total__cost">0</span><span class="font-weight-bold">$</span>
           </div>
           <a href="checkout.html" class="btn btn-secondary btn-block mb-3 bg-hover-primary border-hover-primary">Check Out</a>
           <a href="shopping-cart.html" class="btn btn-outline-secondary btn-block">View Cart</a>
         </div>
       </div>
+
+      </div>
     </div>
+
+
+
+
+
+
+
     <div class="mfp-hide search-popup mfp-with-anim" id="search-popup">
       <form>
         <div class="input-group position-relative">

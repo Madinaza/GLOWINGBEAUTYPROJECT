@@ -1392,3 +1392,329 @@
         APP.shopSingle.init();
     });
 })(jQuery);
+
+
+
+
+
+
+
+
+const cartCounter=document.querySelector(".cart__counter");
+const cartDOM=document.querySelector(".cart__items");
+
+
+const addToCart=document.querySelectorAll("#addToCart");
+const totalCounter=document.querySelector(".total__counter");
+const totalCost=document.querySelector(".total__cost");
+
+
+// const checkOutBtn=document.querySelector(".check_out_btn");
+
+
+let cartItems= (JSON.parse(localStorage.getItem(".cart__items")) || []);
+
+
+
+
+document.addEventListener("DOMContentLoaded",loadData)
+
+// checkOutBtn.addEventListener("click",()=>{
+//     if(confirm("Are you sure to clear the cart?")){
+//         clearCartItems();
+//     }
+// })
+
+
+addToCart.forEach(btn=>{
+    btn.addEventListener("click",function(){
+        let parentElement=btn.parentElement.parentElement.parentElement
+        .parentElement.parentElement.parentElement;
+        const product={
+            Id : parentElement.querySelector("#product__id").value,
+            model : parentElement.querySelector("#product__name").innerText,
+            image : parentElement.querySelector("#image").src,
+            price : parentElement
+             .querySelector("#product__price").innerText.replace("$",""),
+             quantity:1,
+        };
+
+
+   let isInCart=cartItems.filter(item=>item.Id===product.Id).length>0;
+   console.log(isInCart);
+   if(!isInCart){
+       addItemToTheDOM(product);
+   }else{
+       alert("product already in the cart")
+       return;
+   }
+
+   const cartDOMItems=document.querySelectorAll(".cart__item");
+   cartDOMItems.forEach(individualItem =>{
+       if(individualItem.querySelector("#product__id").value === product.Id){
+           increaseItem(individualItem,product)
+           decreaseItem(individualItem,product)
+         removeItem(individualItem,product)
+       }
+   })
+
+   cartItems.push(product)
+   calculateTotal();
+   saveLocalStorage();
+
+    })
+})
+function saveLocalStorage(){
+    localStorage.setItem(".cart__items",JSON.stringify(cartItems))
+}
+
+function addItemToTheDOM(product){
+  cartDOM.insertAdjacentHTML("afterbegin",`
+  <div class="mb-4 d-flex cart__item">
+  <input type="hidden" name="" id="product__id" value="${product.Id}">
+  <a style="font-size:25px;margin: 10px 0px;text-decoration:none ;cursor:pointer" class="d-flex align-items-center mr-2 text-muted" action="remove">
+     <i class="fal fa-times"></i></a>
+  <div class="media w-100">
+    <div class="w-60px mr-3">
+      <img src="${product.image}">
+    </div>
+    <div class="media-body d-flex">
+      <div class="cart-price pr-6">
+        <p class="fs-20 font-weight-bold text-secondary mb-1"><span
+                          class="font-weight-500 fs-13 text-line-through
+                           text-body mr-1"></span>${product.price}$
+        </p>
+        <a style="font-size:18px"  class="text-secondary">${product.model}</a>
+      </div>
+      <div class="position-relative ml-auto">
+        <div class="input-group">
+          <a style="font-size:25px;margin:10px ;text-decoration:none ;cursor:pointer" class="btn__small"action="decrease">&minus;</a>
+<h4 style="font-size:2rem;margin:10px" class="product_quantity">${product.quantity}</h4>
+<a style="font-size:25px;margin:10px; text-decoration:none ;cursor:pointer"  class="btn__small"action="increase">&plus;</a>
+         
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+`);
+
+
+}
+
+function  calculateTotal(){
+    let total=0;
+    cartItems.forEach(item=>{
+        total+=item.quantity*item.price;
+    });
+    totalCost.innerText=total;
+    totalCounter.innerText=cartItems.length;
+
+}
+
+function increaseItem(individualItem,product){
+    individualItem.querySelector("[action='increase']").addEventListener("click",()=>{
+        cartItems.forEach(cartItem=>{
+            if(cartItem.Id===product.Id){
+                individualItem.querySelector(".product_quantity").innerText=++cartItem.quantity;
+                calculateTotal();
+                saveLocalStorage()
+            }
+        })
+    })
+
+}
+
+function decreaseItem(individualItem,product){
+    individualItem.querySelector("[action='decrease']").addEventListener("click",()=>{
+        cartItems.forEach(cartItem=>{
+            if(cartItem.Id===product.Id){
+                if(cartItem.quantity>1){
+                    individualItem.querySelector(".product_quantity").innerText=--cartItem.quantity;
+                }
+                else{
+                    cartItems=cartItems.filter(newElements=>newElements.Id!==product.Id);
+                    individualItem.remove()
+                }
+              
+                calculateTotal();
+                saveLocalStorage()
+               
+            }
+        })
+    })
+
+}
+
+function removeItem(individualItem,product){
+    individualItem.querySelector("[action='remove']").addEventListener("click",()=>{
+        cartItems.forEach(cartItem=>{
+            if(cartItem.Id===product.Id){
+
+                    cartItems=cartItems.filter(newElements=>newElements.Id!==product.Id);
+                    individualItem.remove()
+                calculateTotal();
+                saveLocalStorage()
+
+            }
+        })
+    })
+}
+
+function loadData(){
+ if(cartItems.length>0){
+    cartItems.forEach(product=>{
+        addItemToTheDOM(product);
+
+        const cartDOMItems=document.querySelectorAll(".cart__item");
+   cartDOMItems.forEach(individualItem =>{
+       if(individualItem.querySelector("#product__id").value === product.Id){
+           increaseItem(individualItem,product)
+           decreaseItem(individualItem,product)
+         removeItem(individualItem,product)
+       }
+   });
+    });
+    calculateTotal()
+    saveLocalStorage()
+ }
+}
+
+
+
+
+
+// const cartCounter=document.querySelector(".cart__counter");
+const cartDOM1=document.querySelector(".cart__items1");
+const addToWishList=document.querySelectorAll("#addToWishList");
+const totalCounter1=document.querySelector(".total__counter1");
+
+let cartItems1= (JSON.parse(localStorage.getItem(".cart__items1")) || []);
+document.addEventListener("DOMContentLoaded",loadData1)
+
+addToWishList.forEach(btn=>{
+    btn.addEventListener("click",function(){
+        let parentElement=btn.parentElement.parentElement.parentElement
+        .parentElement.parentElement.parentElement;
+        const product={
+            Id : parentElement.querySelector("#product__id").value,
+            model : parentElement.querySelector("#product__name").innerText,
+            image : parentElement.querySelector("#image").src,
+            price : parentElement
+             .querySelector("#product__price").innerText.replace("$",""),
+            
+        };
+        console.log(product)
+
+
+   let isInCart=cartItems1.filter(item=>item.Id===product.Id).length>0;
+   console.log(isInCart);
+   if(!isInCart){
+       addItemToTheDOM1(product);
+   }else{
+       alert("product already in the cart")
+       return;
+   }
+
+   const cartDOMItems1=document.querySelectorAll(".cart__item1");
+   cartDOMItems1.forEach(individualItem =>{
+       if(individualItem.querySelector("#product__id").value === product.Id){
+         removeItem(individualItem,product)
+       }
+   })
+
+   cartItems1.push(product)
+   calculateTotal();
+   saveLocalStorage();
+
+    })
+})
+
+function saveLocalStorage1(){
+    localStorage.setItem(".cart__items1",JSON.stringify(cartItems1))
+}
+
+function addItemToTheDOM1(product){
+  cartDOM1.insertAdjacentHTML("afterbegin",`
+
+  <input type="hidden" name="" id="product__id" value="${product.Id}">
+                  <th scope="row" class="pl-xl-6 py-4 d-flex align-items-center cart__item1">
+                  <a style="font-size:25px;margin: 10px 0px;text-decoration:none ;cursor:pointer" class="d-flex align-items-center mr-2 text-muted" action="remove">
+     <i class="fal fa-times"></i></a>
+                    <div class="media align-items-center">
+                      <div class="ml-3 mr-4">
+                        <img src="${product.image}"
+									     alt="" class="mw-75px">
+                      </div>
+                      <div class="media-body mw-210">
+                        <p class="font-weight-500 text-secondary mb-2 lh-13">${product.model}</p>
+                        <p class="card-text font-weight-bold fs-14 mb-1 text-secondary">
+                          <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
+                          <span>${product.price}</span>
+                        </p>
+                        <p class="font-weight-500 mb-0">August 14, 2021</p>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="align-middle text-right pr-6">
+                    <span class="mr-4">In stock</span>
+                    <a href="#"
+							   class="btn btn-outline-secondary border-2x border border-hover-secondary py-1 w-150px px-0 my-3">Add To Cart</a>
+                  </td>
+                </tr>
+
+`);
+
+
+}
+
+function loadData1(){
+    if(cartItems1.length>0){
+       cartItems.forEach(product=>{
+           addItemToTheDOM1(product);
+   
+           const cartDOMItems1=document.querySelectorAll(".cart__item1");
+      cartDOMItems1.forEach(individualItem =>{
+          if(individualItem.querySelector("#product__id").value === product.Id){
+             
+          }
+      });
+       });
+      
+       saveLocalStorage()
+    }
+   }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function clearCartItems(){
+//     localStorage.clear();
+//     cartItems=[];
+//     document.querySelectorAll(".cart__items").forEach(item=>{
+//         item.querySelectorAll(".cart__item").forEach(node=>{
+//             node.remove();
+//         })
+//     })
+//     calculateTotal()
+// }
+
+
+
+
