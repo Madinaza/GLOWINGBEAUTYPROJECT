@@ -1,0 +1,67 @@
+﻿
+@model Slider
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*@section Scripts{
+    <partial name="_PartialView" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}*@
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Create new Slider</h4>
+
+                        <form method="post" asp-controller="slider" asp-action="create" enctype="multipart/form-data" class="forms-sample">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Signature Title:</label>
+                                <input accept="image/*" asp-for="SignatureTitle" class="form-control" id="exampleInputUsername1" placeholder="Signature Title">
+                                <span asp-validation-for="SignatureTitle"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Title:</label>
+                                <input asp-for="Title" class="form-control" id="exampleInputUsername1" placeholder="Title">
+                                <span asp-validation-for="Title"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Description:</label>
+                                <span asp-validation-for="Description"></span>
+
+                                <input asp-for="Description" class="form-control" id="Description" placeholder="description">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Image</label>
+                                <input accept="image/*" asp-for="ImageFile" class="form-control" id="exampleInputUsername1" placeholder="Image">
+                                <span asp-validation-for="ImageFile"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Order:</label>
+                                <input asp-for="Order" class="form-control" id="exampleInputUsername1" placeholder="Order">
+                                <span asp-validation-for="Order"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

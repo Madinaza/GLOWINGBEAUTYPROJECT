@@ -1,0 +1,23 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> Title:@Model.Title</h4>
+
+                        <p class="card-title">
+                           Description: @Model.Description
+                        </p>
+                        <img style="width:550px;height:350px" src="~/assets/images/@Model.Image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
