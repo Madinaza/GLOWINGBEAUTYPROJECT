@@ -1,0 +1,175 @@
+﻿@model VmCart
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor _HttpContextAccessor
+@using GlowingFinal.Controllers
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="py-2 bg-gray-2" data-animated-id="1">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                <li class="breadcrumb-item">
+                    <a class="text-decoration-none text-body" asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">
+                    Cart
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+
+<div class="wishlist-full pt-100 pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            @{
+                var msg = _HttpContextAccessor.HttpContext.Session.GetObject<List<string>>("QuantityError");
+
+                if (msg != null)
+                {
+                    <div class="text-center alert alert-light pb-0 col-lg-10">
+
+                        @foreach (var item in msg)
+                        {
+                            <p class="text-warning" style="font-size: 18px !important;">@item</p>
+                        }
+
+                    </div>
+                }
+
+                _HttpContextAccessor.HttpContext.Session.Remove("QuantityError");
+
+                if (TempData["Errorcart2"] != null)
+                {
+                    <div class="text-center alert alert-light pb-0 col-lg-10">
+
+                        <p class="text-warning" style="font-size: 18px !important;">@(TempData["Errorcart2"] as string)</p>
+
+                    </div>
+                    TempData["Errorcart2"] = null;
+                }
+
+                if (TempData["PaymentSuccess"] != null)
+                {
+                    <input id="PaymentSuccessAlert" type="hidden" value="true" />
+                    TempData["PaymentSuccess"] = null;
+                }
+
+            }
+
+
+
+
+            <section class="pb-11 pb-lg-13">
+                <div class="container">
+                    <h2 class="text-center mt-9 mb-6">Shopping Cart</h2>
+                    @{
+                        if (Model.Products != null)
+                        {
+
+                            <form class="table-responsive-md pb-8 pb-lg-10 cart-full-checker" asp-controller="Checkout" asp-action="CartToCheckout">
+                                <table class="table border">
+                                    <thead style="background-color: #F5F5F5">
+                                        <tr class="fs-15 letter-spacing-01 font-weight-600 text-uppercase text-secondary">
+                                            <th scope="col" class="border-1x pl-7">products</th>
+                                            <th scope="col" class="border-1x">quantity</th>
+                                            <th colspan="2" class="border-1x">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.Products)
+                                            {
+                                                <input type="hidden" asp -for="@Model.ProductIds" value="@item.Id" />
+
+
+                                                <tr class="position-relative">
+
+                                                    <th scope="row" class="w-xl-695 pl-xl-5 py-4">
+
+                                                        <div class="media align-items-center">
+                                                            <input class="checkbox-primary w-15px h-15px" type="checkbox" name="check-product"
+                                                                   value="checkbox">
+                                                            <div class="ml-3 mr-4">
+                                                                <img src="~/assets/images/@item.MainImage"
+                                                                     alt="" class="mw-75px">
+                                                            </div>
+                                                            <div class="media-body w-128px">
+                                                                <p class="font-weight-500 mb-1 text-secondary">@item.Name</p>
+                                                                <p class="card-text font-weight-bold fs-14 mb-1 text-secondary">
+                                                                    <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
+                                                                    <span>$@item.Price</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td class="align-middle">
+
+                                                        <div class="input-group position-relative w-128px">
+                                                            <a class="down position-absolute pos-fixed-left-center pl-2 z-index-2"><i class="far fa-minus"></i></a>
+                                                            <input asp-for="@Model.ProductCounts" name="number[]" type="number" class="cart-action-box @("cart-action-box"+item.Id)    form-control form-control-sm px-6 fs-16 text-center input-quality border-0 h-35px" value="1" required="">
+                                                            <a class="up position-absolute pos-fixed-right-center pr-2 z-index-2">
+                                                                <i class="far fa-plus"></i>
+                                                            </a>
+                                                        </div>
+
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <p class="mb-0 text-secondary font-weight-bold mr-xl-11">$48.00</p>
+                                                    </td>
+                                                    <td class="align-middle text-right pr-5">
+                                                        <a class="d-block" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-Id="@item.Id">
+                                                            <i class="fal fa-times text-body"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+
+
+
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </form>
+
+
+
+                        }
+                        else
+                        {
+                            <div class="text-center">
+                                <img src="~/assets/images/empty-cart..png" alt="Alternate Text" style="margin-left: 20px !important;" />
+                                <p style="font-size: 18px !important; color: #7d7d7d !important; ">There is nothing in your cart. Let's add some items.</p>
+                                <a class="btn btn-primary btn-lg font-weight-medium auth-form-btn" style=" color: white !important; " asp-controller="Shop" asp-action="Index">Go To Shop</a>
+                            </div>
+                        }
+
+                    }
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>

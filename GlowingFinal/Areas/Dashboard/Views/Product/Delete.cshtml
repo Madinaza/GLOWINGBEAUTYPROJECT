@@ -1,0 +1,85 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@Model.Name</h4>
+
+                        <p>
+                            Desc:
+                            @Html.Raw(Model.ShortDesc)
+                        </p>
+                        <p>
+                            Price :
+                            @Model.Price
+                        </p>
+                        <p>
+                            SKU :
+                            @Model.SKU
+                        </p>
+                        <p>
+                            Categories :
+                            @foreach (var item in Model.ProductCategoryToProduct)
+                            {
+                                <span>@item.ProductCategory.CategoryName</span>
+                            }
+                        </p>
+                        <p>Images:</p>
+                        <p>
+
+                            <img style="width: 565px;" src="~/assets/images/@Model.MainImage" />
+                        </p>
+                        <div class="d-flex ">
+                            @foreach (var image in Model.ProductImages)
+                            {
+                                <img style="width: 180px; margin: 5px;" src="~/assets/images/@image.Image" />
+                            }
+                        </div>
+
+                        @if (Model.ProductComments != null)
+                        {
+                            @foreach (var comment in Model.ProductComments)
+                            {
+                                <div class="col-12 d-flex pb-2">
+                                    <div class="personImg">
+                                        <img src="~/assets/images/productPerson1.png" alt="" />
+                                    </div>
+                                    <div class="personBody mx-3">
+                                        <div class="person-name d-flex my-4">
+                                            <p>@comment.User.FullName</p>
+                                            <p class="mx-2">@comment.CreatedAt.ToString("dd.MM.yyyy")</p>
+                                        </div>
+                                        <div class="person-description my-3">
+                                            <p style="font-family: Lora, serif">
+                                                @comment.Description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+
+                        <p style="color:red ;margin-top:30px; font-size:21px">
+                            Are you sure to delete?
+                        </p>
+                        <a style="width:300px ;text-decoration:none" asp-action="Index" asp-controller="Product" class="btn btn btn-outline-dark " type="button"> Cancel</a>
+                        <form method="post" asp-action="Delete" asp-controller="Product" asp-route-id="@Model.Id">
+                            <button style="width:300px" type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

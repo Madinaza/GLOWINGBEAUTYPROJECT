@@ -1,0 +1,213 @@
+﻿@model ProductVM
+@{
+    ViewData["Title"] = "Shop";
+    int x = 0;
+}
+
+<main id="content">
+    <section class="py-2 bg-gray-2" data-animated-id="1">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-decoration-none text-body" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">
+                        Shop
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <section data-animated-id="2">
+        <div class="container container-xl">
+            <h2 class="text-center mt-9 mb-8">Shop</h2>
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <a href="#" class=" text-secondary d-flex align-items-center text-decoration-none my-sm-0 my-3" data-canvas="true" data-canvas-options="{&quot;container&quot;:&quot;.filter-canvas&quot;}">
+                    <svg class="icon icon-text-align-left-light mr-2 fs-32">
+                        <use xlink:href="#icon-text-align-left-light"></use>
+                    </svg>
+                    Show Sidebar
+                </a>
+                <div class="d-flex align-items-center">
+                    <div class="switch-layout d-lg-flex align-items-center d-none">
+                        <span class="pr-5">See</span>
+                        <a href="#" class="active pr-5" title="Grid View">
+                            <svg class="icon icon-squares-four fs-32 hover-secondary">
+                                <use xlink:href="#icon-squares-four"></use>
+                            </svg>
+                        </a>
+                        <a href="shop-page-05.html" title="List View">
+                            <svg class="icon icon-list fs-32 hover-secondary">
+                                <use xlink:href="#icon-list"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="dropdown show lh-1 rounded ml-lg-5 ml-0" style="background-color:#f5f5f5">
+                        <a href="#" class="dropdown-toggle custom-dropdown-toggle text-decoration-none text-secondary p-3 mw-210 position-relative d-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Default Sorting
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-item" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Price high to low</a><br />
+                            <a class="dropdown-item" href="#">Price low to high</a><br />
+                            <a class="dropdown-item" href="#">Random</a><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mt-7" data-animated-id="3">
+        <div class="container container-xl">
+            <div class="row">
+
+              
+
+
+
+                        @foreach (var item in Model.Products)
+                        {
+
+                            <div class="col-md-3 col-sm-6 mb-3 product__element fadeInUp animated" data-animate="fadeInUp">
+                                <input type="hidden" name="" id="@item.Id" value="@item.Id">
+                              
+                                    <div class="card border-0 product">
+                                        <div class="position-relative">
+                                            <a asp-action="Detail" asp-controller="Shop" asp-route-id="@item.Id">
+                                                <img id="image" src="~/assets/images/@item.MainImage" alt="Facial cleanser">
+                                                </a>
+                                                <div class="card-img-overlay d-flex p-3">
+                                                    <div>
+                                                        @if (@item.Campaign?.DiscountPercent != null)
+                                                        {
+                                                            <span class="badge badge-primary">-@item.Campaign?.DiscountPercent%</span>
+                                                        }
+
+                                                    </div>
+                                                    <div class="my-auto w-100 content-change-vertical product-add-action">
+
+                                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title=""
+                                                           class="add-to-cart2  add-to-cart ml-auto d-flex align-items-center
+                                                   justify-content-center text-secondary bg-white hover-white bg-hover-secondary
+                                                  w-48px h-48px rounded-circle mb-2" data-tippy="Add to cart" data-original-title="Add To Cart" data-tippy-inertia="true"
+                                                           data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+
+                                                            <input type="hidden" value="@item.Id" />
+                                                            <svg id="addToCart" class="icon icon-shopping-bag-open-light fs-24">
+                                                                <use xlink:href="#icon-shopping-bag-open-light">
+                                                                </use>
+                                                            </svg>
+                                                        </a>
+
+
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none" data-original-title="Quick view">
+                                                            <span data-toggle="modal" data-target="#quick-view">
+                                                                <svg class="icon icon-eye-light fs-24">
+                                                                    <use xlink:href="#icon-eye-light"></use>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                        <input class="add-to-wishlist-product-id" type="hidden" value="@item.Id" />
+
+                                                        <a data-toggle="tooltip"
+                                                           data-placement="left" title=""
+                                                           class="add-to-wishlist ml-auto d-flex align-items-center justify-content-center text-secondary bg-white
+                                                   hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2" data-original-title="Add to wishlist"
+                                                           data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                           data-tippy-arrow="true" data-tippy-theme="sharpborder">
+
+                                                            <input class="add-to-wishlist-product-id" type="hidden" value="@item.Id" />
+                                                            <svg class="icon icon-star-light fs-24  fal fa-heart @(Model.Favourite==null? "": Model.Favourite.Any(f=>f==item.Id.ToString())? "added-to-wishlist":"")">
+                                                                <use xlink:href="#icon-star-light"></use>
+                                                            </svg>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="card-body px-0 pt-4 text-center">
+                                            <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
+
+                                                @if (@item.Campaign?.DiscountPercent == null)
+                                                        
+                                                {
+                                                    <span class="price">$@item.Price</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price"><span style="text-decoration:line-through">$@item.Price</span>, $@item.DiscountPrice</span>
+                                                }
+
+
+                                            </p>
+                                            <h2 class="card-title fs-15 font-weight-500 mb-2">
+                                                <a asp-action="Detail" asp-controller="Shop" asp-route-id="@item.Id" id="product__name">@item.Name </a>
+                                            </h2>
+                                            <div class="d-flex align-items-center justify-content-center flex-wrap">
+                                                <ul class="list-inline mb-0 lh-1">
+                                                    <li class="list-inline-item fs-12 text-primary mr-0">
+                                                        <i class="fas fa-star"></i>
+                                                    </li>
+                                                    <li class="list-inline-item fs-12 text-primary mr-0">
+                                                        <i class="fas fa-star"></i>
+                                                    </li>
+                                                    <li class="list-inline-item fs-12 text-primary mr-0">
+                                                        <i class="fas fa-star"></i>
+                                                    </li>
+                                                    <li class="list-inline-item fs-12 text-primary mr-0">
+                                                        <i class="fas fa-star"></i>
+                                                    </li>
+                                                    <li class="list-inline-item fs-12 text-primary mr-0">
+                                                        <i class="fas fa-star"></i>
+                                                    </li>
+                                                </ul>
+                                                <span class="card-text fs-14 font-weight-400 pl-2 lh-1">2947 reviews</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                              
+                               
+                            </div>
+                        }
+                        
+
+
+
+
+                    </div>
+                </div>
+</section>
+    <section class="pb-lg-13 pb-11" data-animated-id="4">
+        <nav>
+            <ul class="pagination justify-content-center align-items-center mb-0 fs-16 font-weight-600">
+                <li class="page-item fs-18 d-none d-sm-block">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#" tabindex="-1"><i class="far fa-angle-double-left"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">1</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">4</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">...</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">16</a>
+                </li>
+                <li class="page-item fs-18 d-none d-sm-block">
+                    <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#"><i class="far fa-angle-double-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</main>

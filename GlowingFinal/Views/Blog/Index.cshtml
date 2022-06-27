@@ -1,0 +1,54 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main id="content">
+    <section class="py-2 bg-gray-2">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-decoration-none text-body" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Blogs</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <section class="pt-9 pb-lg-13 pb-11">
+        <div class="container container-xl">
+            <h2 class="text-center mb-8" data-animate="fadeInUp">Blogs </h2>
+            <div class="row layout-masonry">
+                @foreach (var blog in Model)
+                {
+                    <div class="col-md-4 col-lg-3 layout-masonry-item mb-8">
+                        <div class="card border-0" data-animate="fadeInUp">
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="hover-shine card-img-top">
+                                <img src="~/assets/images/@blog.Image"
+                                     alt="How to Plop Hair for Bouncy, Beautiful Curls">
+                            </a>
+                            <div class="card-body p-0 text-left">
+                                <ul class="list-inline mt-4 fs-13 text-uppercase letter-spacing-01 lh-1 font-weight-600">
+                                    <li class="list-inline-item pr-3 border-right border-2x"> Life style</li>
+                                    <li class="list-inline-item pr-3"> @blog.Date.Date.ToString("MMMM dd,yyyy")</li>
+                                </ul>
+                                <h3 class="card-title mb-0 fs-20">
+                                    <a class="text-decoration-none" asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Title</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mt-1" data-animate="fadeInUp">
+                    <a href="shop-page-01.html"
+                       class=" btn btn-outline-secondary border border-2x border-hover-secondary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,94 @@
+﻿@model ProductPostViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Create new Flower</h4>
+                        <form class="forms-sample" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Name</label>
+                                <input asp-for="Name" class="form-control" placeholder="Name">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Description</label>
+                                <textarea asp-for="Desc" class="form-control " id="Description" placeholder="Desc"></textarea>
+                                <span asp-validation-for="Desc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Price</label>
+                                <input asp-for="Price" class="form-control" placeholder="Price">
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">SKUCode</label>
+                                <input asp-for="SKUCode" class="form-control" placeholder="SKUCode">
+                                <span asp-validation-for="SKUCode" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">MainImage</label>
+                                <input asp-for="MainImage" accept="image/*" class="form-control" placeholder="MainImage">
+                                <span asp-validation-for="MainImage" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Images</label>
+                                <input asp-for="Images" accept="image/*" class="form-control" placeholder="Images">
+                                <span asp-validation-for="Images" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Campaign</label>
+                                <select class="form-control" asp-for="CampaignId">
+                                    <option></option>
+                                    @foreach (var campaign in Model.Campaigns)
+                                    {
+                                        <option value="@campaign.Id">@campaign.DiscountPercent</option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="CampaignId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Categories</label>
+                                <select class="form-control" asp-for="CategoryIds">
+                                    @foreach (var cat in Model.Categories)
+                                    {
+                                        <option value="@cat.Id">@cat.CategoryName</option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="CategoryIds" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_PartialView" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
+}
+

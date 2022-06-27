@@ -1,0 +1,90 @@
+﻿@model BankCarts
+@inject IHttpContextAccessor httpContextAccessor
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @*<link rel="shortcut icon" href="#">*@
+    <title>Cart Information</title>
+    <link href="~/css/BankStyle.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="padding" style="margin-top:100px">
+        <div class="row">
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="col-sm-8 col-md-6">
+                    @{
+                        if (TempData["BalanceError"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                <p class="text-danger m-0">
+                                    @(TempData["BalanceError"] as string);
+                                </p>
+                            </div>
+
+                            TempData["BalanceError"] = null;
+                            httpContextAccessor.HttpContext.Session.Remove("bankcartInfo");
+                        }
+                    }
+                    <div class="card">
+                        <form asp-controller="Bank" asp-action="Payment" method="post">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-6"> <span>CREDIT/DEBIT CARD PAYMENT</span> </div>
+                                    <div class="col-md-6 text-right" style="margin-top: -5px;"></div>
+                                </div>
+                            </div>
+                            <div class="card-body" style="height: 350px">
+                                <div class="form-group">
+                                    <label for="cc-number" class="control-label">CARD NUMBER</label>
+                                    <input id="cc-number" asp-for="@Model.CartNo" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
+                                    <span asp-validation-for="CartNo"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cc-exp" class="control-label">CARD EXPIRY</label>
+                                            <input id="cc-exp" asp-for="@Model.CardExpiry" type="month" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required>
+                                            <span asp-validation-for="CardExpiry"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cc-cvc" class="control-label">CARD CVC</label>
+                                            <input id="cc-cvc" asp-for="@Model.Cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required>
+                                            <span asp-validation-for="Cvc"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numeric" class="control-label">CARD HOLDER NAME</label>
+                                    <input asp-for="@Model.HolderName" type="text" class="input-lg form-control">
+                                    <span asp-validation-for="HolderName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">MAKE PAYMENT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js.map"></script>*@
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/js/BankJs.js"></script>*@
+</body>
+</html>

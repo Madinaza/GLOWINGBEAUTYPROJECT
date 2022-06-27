@@ -1,0 +1,29 @@
+﻿@model ProductCategory
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Category</h4>
+                        <form class="forms-sample" method="post" asp-controller="ProductCategory" asp-action="Update">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Name</label>
+                                <input asp-for="CategoryName" class="form-control" placeholder="Name">
+                                <span asp-validation-for="CategoryName" class="text-danger"></span>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a class="btn btn-light" asp-controller="ProductCategory" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

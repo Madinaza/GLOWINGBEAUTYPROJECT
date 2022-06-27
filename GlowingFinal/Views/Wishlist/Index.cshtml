@@ -1,0 +1,124 @@
+﻿@model VmWishlist
+<!-- #region Breadcrump Area -->
+<section class="py-2 bg-gray-2" data-animated-id="1">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                <li class="breadcrumb-item">
+                    <a class="text-decoration-none text-body" asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">
+                    Wishlist
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!-- #endregion Breadcrump Area End -->
+<!-- #region Wishlist -->
+<div class="wishlist-full pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @{
+                    if (Model.Products != null)
+                    {
+                        <form action="#">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">Remove</th>
+                                            <th class="product-thumbnail">Images</th>
+                                            <th class="cart-product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-stock-status">Stock Status</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.Products)
+                                            {
+                                                <tr>
+                                                    <td class="product-remove">
+                                                        <a asp-controller="Shop" asp-action="RemoveFromWishlist" asp-route-Id="@item.Id">
+                                                            <i class="fal fa-times" data-tippy="Remove" data-tippy-inertia="true"
+                                                               data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                               data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-thumbnail">
+                                                        <a asp-controller="Shop" asp-action="SingleProduct" asp-route-Id="@item.Id">
+                                                            <img style="width:100px;height:100px" src="~/assets/images/@item.MainImage" alt="Wishlist Thumbnail">
+                                                            <input class="add-to-cart-product-id" type="hidden" value="@item.Id" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name"><a asp-controller="Shop" asp-action="SingleProduct" asp-route-Id="@item.Id">@item.Name</a></td>
+                                                    <td class="product-price">
+                                                        <span class="amount">
+                                                            @{
+                                                                bool noPrice = false;
+                                                                foreach (var price in item.ProductSizeToProducts)
+                                                                {
+                                                                    if (price.Price != 0)
+                                                                    {
+                                                                        @price.Price
+                                                                        noPrice = false;
+                                                                        break;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        noPrice = true;
+                                                                    }
+                                                                }
+
+                                                                if (noPrice)
+                                                                {
+                                                                    string noPriceText = "Price will be Update soon";
+                                                                    @noPriceText
+                                                                }
+                                                            }
+                                                        </span>
+                                                    </td>
+                                                    <td class="product-stock-status">
+                                                        @{
+                                                            if (item.ProductSizeToProducts.Any(ps => ps.Quantity > 0))
+                                                            {
+                                                                <span class="in-stock text-success">
+                                                                    @("In Stock")
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="in-stock text-danger">
+                                                                    @("Out Stock")
+                                                                </span>
+
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td class="cart-btn"><a class="add-to-cart-btn-from-wishlist  btn btn-block btn-primary btn-sm font-weight-medium auth-form-btn " href="#">add to cart</a></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="text-center">
+                            <img src="~/assets/images/empty-cart..png" alt="Alternate Text" style="margin-left: 20px !important;" />
+                            <p style="font-size: 18px !important; color: #7d7d7d !important; ">There is nothing in your Wishlist. Let's add some items.</p>
+                            <a class="btn btn-primary btn-lg font-weight-medium auth-form-btn" style=" color: white !important; margin-bottom:50px" asp-controller="Shop" asp-action="Index">Go To Shop</a>
+                        </div>
+                        
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

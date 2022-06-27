@@ -1,0 +1,73 @@
+﻿@model BlogVm
+@{
+    ViewData["Title"] = "Update";
+}
+
+@section Scripts{
+    <partial name="_PartialView" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Blog</h4>
+
+                        <form method="post" asp-controller="Blog" asp-action="Update" enctype="multipart/form-data" class="forms-sample">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Title</label>
+                                <textarea asp-for="Title" class="form-control" id="exampleInputUsername1" placeholder="Title"></textarea>
+                                <span asp-validation-for="Title"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Author</label>
+                                <span asp-validation-for="Author"></span>
+
+                                <textarea asp-for="Author" class="form-control" placeholder="Author"></textarea>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="birthday">Date</label><br>
+                                <input asp-for="Date" type="date" id="birthday" name="birthday">
+                                <span asp-validation-for="Date"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Description</label>
+                                <span asp-validation-for="Description"></span>
+
+                                <textarea asp-for="Description" class="form-control" id="Description" placeholder="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Image</label>
+                                <input accept="image/*" asp-for="ImageFile" class="form-control" id="exampleInputUsername1" placeholder="Image">
+                                <span asp-validation-for="ImageFile"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">DetailImageFile</label>
+                                <input accept="image/*" asp-for="DetailImageFile" class="form-control" id="exampleInputUsername1" placeholder="DetailImageFile">
+                                <span asp-validation-for="DetailImageFile"></span>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

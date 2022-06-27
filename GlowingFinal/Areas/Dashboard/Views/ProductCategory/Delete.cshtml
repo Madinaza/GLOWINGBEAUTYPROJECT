@@ -1,0 +1,28 @@
+﻿@model ProductCategory
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <h4 class="card-title">Category Name: @Model.CategoryName</h4>
+
+                        <p style="color:red">
+                            Are you sure to delete?
+                        </p>
+                    </div>
+                    <a style="width:300px ;text-decoration:none" asp-action="Index" asp-controller="ProductCategory" class="btn btn btn-outline-dark " type="button"> Cancel</a>
+                    <form method="post" asp-action="Delete" asp-controller="ProductCategory" asp-route-id="@Model.Id">
+                        <button style="width:300px" type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

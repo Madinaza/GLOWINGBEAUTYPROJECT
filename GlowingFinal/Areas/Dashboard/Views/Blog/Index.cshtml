@@ -1,0 +1,66 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">List of Blogs</h4>
+            <p class="card-description">
+                Add class <code>.table-dark</code>
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Author
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Blog item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Author
+                                </td>
+                                <td style="width:400px">
+                                    @item.Title
+                                </td>
+                                <td>
+                                    <img style="width:150px;height:150px" src="~/assets/images/@item.Image" />
+                                </td>
+                                <td>
+                                    <a class="btn btn-info" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+                                    <a class="btn btn-warning" asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-danger" asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
